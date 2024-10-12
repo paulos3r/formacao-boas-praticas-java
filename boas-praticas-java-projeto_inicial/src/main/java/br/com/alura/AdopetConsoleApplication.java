@@ -3,13 +3,7 @@ package br.com.alura;
 import br.com.alura.client.ClientHttpConfiguration;
 import br.com.alura.service.AbrigoService;
 import br.com.alura.service.PetService;
-import com.google.gson.JsonObject;
 
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
 import java.util.Scanner;
 
 public class AdopetConsoleApplication {
@@ -18,7 +12,7 @@ public class AdopetConsoleApplication {
     ClientHttpConfiguration clint = new ClientHttpConfiguration();
 
     AbrigoService abrigoService = new AbrigoService(clint);
-    PetService petService = new PetService(clint);
+    PetService petService = new PetService();
 
     System.out.println("##### BOAS VINDAS AO SISTEMA ADOPET CONSOLE #####");
     try {
@@ -53,21 +47,5 @@ public class AdopetConsoleApplication {
     } catch (Exception e) {
       e.printStackTrace();
     }
-  }
-  private static HttpResponse<String> dispararRequisicaoGet(HttpClient client, String uri) throws IOException, InterruptedException {
-
-            .uri(URI.create(uri))
-            .method("GET", HttpRequest.BodyPublishers.noBody())
-            .build();
-    return client.send(request, HttpResponse.BodyHandlers.ofString());
-  }
-  private static HttpResponse<String> dispararRequisicaoPost(HttpClient client, String uri, JsonObject json) throws IOException, InterruptedException {
-
-            .uri(URI.create(uri))
-            .header("Content-Type", "application/json")
-            .method("POST", HttpRequest.BodyPublishers.ofString(json.toString()))
-            .build();
-
-     return client.send(request, HttpResponse.BodyHandlers.ofString());
   }
 }
