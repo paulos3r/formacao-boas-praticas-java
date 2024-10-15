@@ -18,6 +18,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class PetService {
+
+  public PetService(ClientHttpConfiguration client){
+  }
+
   public void listarPetsAbrigo() throws IOException, InterruptedException {
     System.out.println("Digite o id ou nome do abrigo:");
     String idOuNome = new Scanner(System.in).nextLine();
