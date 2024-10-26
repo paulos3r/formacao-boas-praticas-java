@@ -1,6 +1,6 @@
 package br.com.alura.adopet.api.validacoes;
 
-import br.com.alura.adopet.api.dto.CadastrarAbrigoDto;
+import br.com.alura.adopet.api.dto.CadastroAbrigoDto;
 import br.com.alura.adopet.api.exception.ValidacaoException;
 import br.com.alura.adopet.api.repository.AbrigoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ public class ValidacaoCadastradoParaOutroAbrigo implements IValidacaoCadastrarAb
   private AbrigoRepository abrigoRepository;
 
   @Override
-  public void validar(CadastrarAbrigoDto dto) {
+  public void validar(CadastroAbrigoDto dto) {
 
     boolean nomeJaCadastrado = abrigoRepository.existsByNome(dto.nome());
     boolean telefoneJaCadastrado = abrigoRepository.existsByTelefone(dto.telefone());
